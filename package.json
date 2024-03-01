@@ -1,0 +1,14 @@
+{
+  "dependencies": {
+    "devbridge-autocomplete": "1.4.11",
+    "icheck-bootstrap": "^3.0.1",
+    "jquery": "3.7.0",
+    "jquery-form": "4.3.0",
+    "jquery-mask-plugin": "1.14.16",
+    "moment": "2.29.4",
+    "noty": "3.2.0-beta-deprecated",
+    "perfect-scrollbar": "1.5.5",
+    "sweetalert2": "11.6.7",
+    "tempusdominus-bootstrap-4": "^5.39.2"
+  }
+}

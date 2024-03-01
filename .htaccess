@@ -1,0 +1,31 @@
+Options All -Indexes
+Options -MultiViews
+Options +FollowSymLinks
+
+RewriteEngine On
+RewriteBase /
+
+# remove extensions html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html
+
+# remove extensions php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.php -f
+RewriteRule ^(.*)$ $1.php
+
+# dmn/prm1/
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+Rewriterule ^([-a-z]+)/$ index.php?prm1=$1&%{QUERY_STRING} [L]
+
+# dmn/prm1/prm2/
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+Rewriterule ^([-a-z]+)/([-a-z]+)/$ index.php?prm1=$1&prm2=$2&%{QUERY_STRING} [L]
+
+# dmn/prm1/prm2/prm3/
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+Rewriterule ^([-a-z]+)/([-a-z]+)/([-a-z]+)/$ index.php?prm1=$1&prm2=$2&prm3=$3&%{QUERY_STRING} [L]
