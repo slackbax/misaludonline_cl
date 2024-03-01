@@ -192,7 +192,7 @@ $(document).ready(function () {
     }
   })
 
-  $weekCalendar.on('change.datetimepicker', ({date, oldDate}) => {
+  $weekCalendar.on('change.datetimepicker', ({date}) => {
     today = date.format('DD/MM/YYYY')
   })
 
@@ -229,7 +229,7 @@ $(document).ready(function () {
     if (selectedHour !== hourFull) {
       selectedHour = hourFull
       selectedProf = tmp[0]
-      consValue = $('#medamount_' + selectedProf).val()
+      let consValue = $('#medamount_' + selectedProf).val()
       $('#med_id').val(selectedProf)
       $('#med_amount').val(consValue)
       $('#slot_data').val($(this).data('hour'))
@@ -237,7 +237,7 @@ $(document).ready(function () {
       resHtml += '<p><i class="fa fa-user-md mr-2"></i>' + $('#medname_' + selectedProf).html() + '</p>'
       resHtml += '<p><i class="fa fa-calendar-alt mr-2"></i>' + $searchResDate.html() + ', ' + hourFull + ' hrs.</p>'
       resHtml += '<p><i class="fa fa-video mr-2"></i>' + $('#consname_' + selectedProf).html() + '</p>'
-      resHtml += '<p><i class="fa fa-usd-circle mr-2"></i>Valor consulta <strong>$' + number_format(consValue,0,'','.') + '</strong></p>'
+      resHtml += '<p><i class="fa fa-usd-circle mr-2"></i>Valor consulta <strong>$' + number_format(consValue, 0, '', '.') + '</strong></p>'
       $('#cons-resume').html(resHtml)
       $confirmWindow.fadeSlideLeft()
       $('.wrapper').addClass('noVisibility')
@@ -398,35 +398,46 @@ $(document).ready(function () {
         type: 'post',
         data: {conid: response.conid},
         dataType: 'json'
-      }).done(function (info) {
+      }).done(function (r) {
         $acceptData.html('Agendar mi hora')
-        Swal.fire({
-          icon: 'success',
-          title: '¡Tu consulta ha sido agendada con éxito!',
-          text: 'Un e-mail de verificación ha sido enviado a tu casilla de correo. Recuerda confirmar tu hora y prepararte con tiempo para tu cita.',
-          confirmButtonText: '<i class="fas fa-check mr-2"></i>Pagar mi consulta',
-          confirmButtonColor: '#3498db',
-          showCancelButton: false,
-          allowOutsideClick: false,
-          allowEscapeKey: false
-        }).then((result) => {
-          if (result.isConfirmed) {
-            let win = window.open('payment/index.php?id=' + response.conid)
-            if (win) {
-              win.focus()
+        if (r.res) {
+          Swal.fire({
+            icon: 'success',
+            title: '¡Tu consulta ha sido agendada con éxito!',
+            text: 'Un e-mail de verificación ha sido enviado a tu casilla de correo. Recuerda confirmar tu hora y prepararte con tiempo para tu cita.',
+            confirmButtonText: '<i class="fas fa-check mr-2"></i>Pagar mi consulta',
+            confirmButtonColor: '#3498db',
+            showCancelButton: false,
+            allowOutsideClick: false,
+            allowEscapeKey: false
+          }).then((result) => {
+            if (result.isConfirmed) {
+              let win = window.open('payment/index.php?id=' + response.conid)
+              if (win) {
+                win.focus()
+              }
             }
-          }
-        });
+          });
 
-        $confirmWindow.removeClass('noVisibility')
-        $('#keep-searching').click()
-        $form.clearForm()
-        $specialty.val(null).trigger('change')
-        $prevision.val(null).trigger('change')
-        if (!$checkDays.is(':checked')) {
-          $checkDays.trigger('click')
+          $confirmWindow.removeClass('noVisibility')
+          $('#keep-searching').click()
+          $form.clearForm()
+          $specialty.val(null).trigger('change')
+          $prevision.val(null).trigger('change')
+          if (!$checkDays.is(':checked')) {
+            $checkDays.trigger('click')
+          }
+          stepper.to(1)
+        } else {
+          Swal.fire({
+            icon: 'error',
+            title: 'Hubo un error al agendar tu hora',
+            text: r.msg + ' Por favor, inténtalo de nuevo más tarde.',
+            confirmButtonText: '<i class="fas fa-check mr-2"></i>Aceptar',
+            confirmButtonColor: '#3498db',
+            showCancelButton: false
+          })
         }
-        stepper.to(1)
       })
     } else {
       new Noty({
