@@ -329,6 +329,7 @@ Copyright (c) 2019 César Chas
           '</div>' +
           '<h3 class="widget-user-username" id="medname_' + v.id + '">' + v.name + '</h3>' +
           '<h5 class="widget-user-desc" id="specname_' + v.id + '">' + v.specialty + '</h5>' +
+          '<input type="hidden" id="medamount_' + v.id + '" value="' + v.amount + '">' +
           '</div>' +
           '<div class="card-body">' +
           '<ul class="nav flex-column">' +
@@ -337,12 +338,10 @@ Copyright (c) 2019 César Chas
           '</li>' +
           '<li class="nav-item hour-container">' +
           '<span class="nav-link">'
-
         $.each(v.hours, function (hi, h) {
           let tmp = h.split(':')
           html += '<button type="button" class="btn hour-slot" id="' + v.id + '_' + tmp[0] + '_' + tmp[1] + '" data-hour="' + v.date + '_' + h + '">' + h + '</button>'
         })
-
         html += '</span>' +
           '</li>' +
           '</ul>' +
