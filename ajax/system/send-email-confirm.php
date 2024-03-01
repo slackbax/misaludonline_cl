@@ -59,10 +59,10 @@ try {
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
   $mail->Port = 587;
 
-  $mail->setFrom(MAIL_USER, 'RAI health');
+  $mail->setFrom(MAIL_USER, 'MiSaludOnline.cl');
   $mail->addAddress($email, $pacie);
   $mail->CharSet = 'utf-8';
-  $mail->Subject = 'Notificaciones RAI health | Confirmar consulta médica';
+  $mail->Subject = 'Notificaciones MiSaludOnline.cl | Confirmar consulta médica';
   $mail->isHTML();
   $html = null;
   $html .= '<p style="text-align:center"><img style="width:180px" alt="RAI health" src="https://www.rai.health/dist/img/rai.png"></p>';
@@ -72,7 +72,7 @@ try {
   $html .= '<br>Especialidad: ' . $espc;
   $html .= '<br>Fecha: ' . $date;
   $html .= '<br>Hora: ' . $time;
-  $html .= '<br><br>Para confirmar o cancelar tu consulta médica, selecciona la opción correspondiente:';
+  $html .= '<br><br>Para confirmar o cancelar tu consulta médica, selecciona la opción correspondiente. Recuerda que si ya pagaste tu consulta, ésta se confirma automáticamente:';
   $html .= '<br><a href="https://rai.health/confirm-consultation/' . $code . '/1/" target="_blank" rel="noopener noreferrer">Confirmo mi asistencia</a> | <a href="https://rai.health/confirm-consultation/' . $code . '/0/" target="_blank" rel="noopener noreferrer">No podré asistir</a>';
 
   if ($ins1->cont_id == 2):
@@ -81,7 +81,7 @@ try {
   endif;
 
   $html .= "<br><br>Muchas gracias por atenderse con nosotros.";
-  $html .= "<br><br><strong>RAI health - Información médica digital</strong>";
+  $html .= "<br><br><strong>MiSaludOnline.cl - Atención médica digital</strong>";
   $mail->Body = $html;
   $mail->AltBody = '¡Para visualizar correctamente el mensaje, por favor utilice un visor de correos compatible con HTML!';
 
