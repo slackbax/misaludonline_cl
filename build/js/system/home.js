@@ -248,6 +248,7 @@ $(document).ready(function () {
   })
 
   $('#close-confirmation-window, #keep-searching').click(function () {
+    $('.middleDay').click()
     $confirmWindow.fadeSlideRight()
     $('.wrapper').removeClass('noVisibility')
     $('.hour-slot').each(function () {
@@ -432,7 +433,7 @@ $(document).ready(function () {
           Swal.fire({
             icon: 'error',
             title: 'Hubo un error al agendar tu hora',
-            text: r.msg + ' Por favor, inténtalo de nuevo más tarde.',
+            text: r.msg + ' Por favor, inténtalo nuevamente.',
             confirmButtonText: '<i class="fas fa-check mr-2"></i>Aceptar',
             confirmButtonColor: '#3498db',
             showCancelButton: false
@@ -440,10 +441,22 @@ $(document).ready(function () {
         }
       })
     } else {
-      new Noty({
-        text: '<strong>¡Error!</strong><br>' + response.msg,
-        type: 'error'
-      }).show()
+      Swal.fire({
+        icon: 'error',
+        title: 'Hubo un error al agendar tu hora',
+        text: response.message + ' Por favor, inténtalo nuevamente.',
+        confirmButtonText: '<i class="fas fa-check mr-2"></i>Aceptar',
+        confirmButtonColor: '#3498db',
+        showCancelButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $acceptData.html('Agendar mi hora')
+          $confirmWindow.removeClass('noVisibility')
+          $('#keep-searching').click()
+        }
+      })
     }
   }
 

@@ -89,9 +89,9 @@ try {
   if (!$send) throw new Exception('No se pudo enviar el correo electrónico. {' . $mail->ErrorInfo . '}');
 
   $msg = 'Se reenvió el correo electrónico de confirmación correctamente.';
-  $response = ['res' => true, 'title' => '<strong>¡Éxito!</strong><br>', 'msg' => $msg];
+  $response = ['res' => true, 'msg' => $msg];
   echo json_encode($response);
 } catch (Exception $e) {
-  $response = ['res' => false, 'title' => '<strong>¡Error!</strong><br>', 'msg' => $e->getMessage()];
+  $response = ['res' => false, 'msg' => $e->getMessage()];
   echo json_encode($response);
 }
