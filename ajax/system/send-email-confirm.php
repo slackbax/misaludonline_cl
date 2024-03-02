@@ -72,7 +72,7 @@ try {
   $html .= '<br>Especialidad: ' . $espc;
   $html .= '<br>Fecha: ' . $date;
   $html .= '<br>Hora: ' . $time;
-  $html .= '<br><br>Para confirmar o cancelar tu consulta médica, selecciona la opción correspondiente. Recuerda que si ya pagaste tu consulta, ésta se confirma automáticamente:';
+  $html .= '<br><br>Para confirmar o cancelar tu consulta médica, selecciona la opción correspondiente. Recuerda que si ya pagaste tu consulta en línea, ésta se confirma automáticamente:';
   $html .= '<br><a href="https://rai.health/confirm-consultation/' . $code . '/1/" target="_blank" rel="noopener noreferrer">Confirmo mi asistencia</a> | <a href="https://rai.health/confirm-consultation/' . $code . '/0/" target="_blank" rel="noopener noreferrer">No podré asistir</a>';
 
   if ($ins1->cont_id == 2):
