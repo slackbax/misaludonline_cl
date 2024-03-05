@@ -1,5 +1,6 @@
 <?php
 $BASEDIR = explode('payment', dirname(__FILE__))[0];
+require $BASEDIR . '/src/settings.php';
 require $BASEDIR . '/class/flow_cl/FlowApi.class.php';
 
 try {
@@ -16,7 +17,7 @@ try {
   $flowApi = new FlowApi();
   $response = $flowApi->send($serviceName, $params);
 
-//print_r($response);
+  print_r($response);
 } catch (Exception $e) {
   echo "Error: " . $e->getCode() . " - " . $e->getMessage();
 }

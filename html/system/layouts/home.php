@@ -17,8 +17,10 @@
     <section class="content-header">
       <div class="container">
         <div class="row">
-          <div class="col-12">
-            <h3>Bienvenido(a)</h3>
+          <div class="col-12 text-center">
+            <a href="https://www.misaludonline.cl">
+              <img src="dist/img/misaludonline.png" alt="MiSaludOnline.cl" style="width: 200px">
+            </a>
           </div>
         </div>
       </div>
@@ -26,7 +28,7 @@
     <section class="content">
       <div class="container">
         <div class="row">
-          <div class="col-8 offset-2">
+          <div class="col-md-8 offset-md-2">
             <div class="bs-stepper">
               <div class="bs-stepper-header d-none d-md-flex" role="tablist">
                 <div class="step" data-target="#patient-data">
@@ -61,12 +63,12 @@
 
                       <div class="card-body">
                         <h5 class="text-center mb-5">Ingresa los datos del paciente para reservar la hora</h5>
-                        <div class="form-group col-10 offset-1 mb-5">
+                        <div class="form-group col-md-10 offset-md-1 mb-5">
                           <label for="rut-pac">RUT</label>
                           <input id="rut-pac" name="rut" class="form-control form-control-border border-width-2" type="text" placeholder="Ingresa RUT del paciente">
                         </div>
 
-                        <div class="form-group col-10 offset-1" id="select-prevision">
+                        <div class="form-group col-md-10 offset-md-1" id="select-prevision">
                           <label for="prevision-pac">Previsión</label>
                           <select id="prevision-pac" name="prevision" class="form-control form-control-border border-width-2" data-placeholder="Selecciona tu previsión"></select>
                         </div>
@@ -90,20 +92,20 @@
 
                       <div class="card-body">
                         <h5 class="text-center mb-4">¿Qué tipo de atención buscas?</h5>
-                        <div class="btn-group col-8 offset-2 mb-5">
+                        <div class="btn-group col-md-8 offset-md-2 mb-5">
                           <button type="button" id="show-spec" class="btn btn-dark">Especialidad</button>
                           <button type="button" id="show-prof" class="btn btn-outline-dark">Profesional</button>
                         </div>
 
                         <div style="min-height: 120px">
                           <div class="mb-5" id="div-spec">
-                            <div class="form-group col-10 offset-1" id="select-specialty">
+                            <div class="form-group col-md-10 offset-md-1" id="select-specialty">
                               <label for="name-spec">Especialidad</label>
                               <select id="name-spec" name="specialty" class="form-control form-control-border border-width-2" data-placeholder="Selecciona la especialidad"></select>
                             </div>
 
                             <div id="div-subspec">
-                              <div class="form-group col-10 offset-1" id="select-subspecialty">
+                              <div class="form-group col-md-10 offset-md-1" id="select-subspecialty">
                                 <label for="name-subspec">Sub-especialidad</label>
                                 <select id="name-subspec" name="subspecialty" class="form-control form-control-border border-width-2" data-placeholder="Selecciona la subespecialidad"></select>
                               </div>
@@ -111,14 +113,14 @@
                           </div>
 
                           <div id="div-prof">
-                            <div class="form-group col-10 offset-1 mb-5" id="select-professional">
+                            <div class="form-group col-md-10 offset-md-1 mb-5" id="select-professional">
                               <label for="name-prof">Profesional</label>
                               <select id="name-prof" name="professional" class="form-control form-control-border border-width-2" data-placeholder="Selecciona el profesional"></select>
                             </div>
                           </div>
                         </div>
 
-                        <div class="form-group clearfix col-10 offset-1">
+                        <div class="form-group clearfix col-md-10 offset-md-1">
                           <div class="icheck-primary d-inline">
                             <input type="checkbox" id="check-days" checked>
                             <label for="check-days">Buscar hora para los próximos 7 días
@@ -150,9 +152,9 @@
 
                       <div class="card-body mb-3">
                         <div class="rescalendar" id="days-calendar"></div>
-                        <div class="form-group col-10 offset-1" id="week-calendar-container">
+                        <div class="form-group col-md-10 offset-md-1" id="week-calendar-container">
                           <div id="week-calendar"></div>
-                          <div class="col-6 offset-3 mt-3">
+                          <div class="col-md-6 offset-md-3 mt-3">
                             <button id="search-date" type="button" class="btn btn-block btn-outline-dark">Buscar hora</button>
                           </div>
                         </div>

@@ -1,3 +1,9 @@
+window.mobileCheck = function() {
+  let check = false
+  if (window.matchMedia("(max-width: 767px)").matches) check = true
+  return check
+};
+
 $(document).ready(function () {
   $.fn.modal.Constructor.prototype._enforceFocus = function () {
   }
@@ -103,8 +109,10 @@ $(document).ready(function () {
   })
 
   $.fn.fadeSlideRight = function (speed, fn) {
+    let mRight = '-25%';
+    if (mobileCheck()) mRight = '-100%'
     return $(this).animate({
-      'margin-right': '-25%'
+      'margin-right': mRight
     }, speed || 500, function () {
       $.isFunction(fn) && fn.call(this);
     });

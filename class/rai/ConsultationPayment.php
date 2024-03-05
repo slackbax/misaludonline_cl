@@ -24,6 +24,7 @@ class ConsultationPayment
 
   /**
    * @param $cons
+   * @param $order
    * @param $date
    * @param $amount
    * @param $fee
@@ -31,7 +32,7 @@ class ConsultationPayment
    * @param $db
    * @return array
    */
-  public function set($cons, $date, $amount, $fee, $balance, $db = null): array
+  public function set($cons, $order, $date, $amount, $fee, $balance, $db = null): array
   {
     if (is_null($db)) $db = new ConnectRAI();
 

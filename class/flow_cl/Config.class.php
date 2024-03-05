@@ -1,5 +1,6 @@
 <?php
-$base_url = 'https://www.misaludonline.cl/scheduling/payment';
+$base_url = 'https://scheduling.test/payment';
+//$base_url = 'https://www.misaludonline.cl/scheduling/payment';
 //$url = FLOW_URL;
 $url = FLOW_SANDBOX_URL;
 //$api_key = FLOW_API_KEY;

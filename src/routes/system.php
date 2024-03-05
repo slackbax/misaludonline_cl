@@ -1,7 +1,7 @@
 <?php
 
 if (!isset($prm1)) {
-  $title = 'Inicio • ';
+  $title = 'Agendamiento • ';
   include 'html/system/layouts/home.php';
 } else {
     header('Location: /');

@@ -187,6 +187,12 @@ hr.hr-text::before {
   border-radius: 0;
   margin-right: -25%;
 }
+@media screen and (max-width: 767px) {
+  #confirmation-window {
+    width: 100%;
+    margin-right: -100%;
+  }
+}
 #confirmation-window .card-header {
   border-radius: 0;
   border-color: #eaeaea;
