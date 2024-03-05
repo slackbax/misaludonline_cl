@@ -2,12 +2,6 @@ a {
   cursor: pointer;
 }
 
-.login-page {
-  background-image: url("../../dist/img/side-bg.jpg");
-  background-repeat: no-repeat;
-  background-position: 100% center;
-}
-
 .modal-xxl {
   max-width: 80%;
 }
