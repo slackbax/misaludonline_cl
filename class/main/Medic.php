@@ -32,7 +32,10 @@ class Medic
       $db = new ConnectMAIN();
     endif;
 
-    $query = "SELECT med_id, CONCAT(pe_fullname, ' ', pe_fathername, ' ', pe_mothername) AS med_name FROM hm_medic m JOIN hm_people hp on hp.pe_id = m.pe_id";
+    $query = "SELECT med_id, CONCAT(pe_fullname, ' ', pe_fathername, ' ', pe_mothername) AS med_name 
+                FROM hm_medic m 
+                JOIN hm_people hp on hp.pe_id = m.pe_id
+                WHERE med_status IS TRUE";
     $stmt = $db->Prepare($query);
     $stmt->execute();
     $result = $stmt->get_result();
