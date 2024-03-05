@@ -1,8 +1,8 @@
-window.mobileCheck = function() {
+window.mobileCheck = function () {
   let check = false
   if (window.matchMedia("(max-width: 767px)").matches) check = true
   return check
-};
+}
 
 $(document).ready(function () {
   $.fn.modal.Constructor.prototype._enforceFocus = function () {
