@@ -65,7 +65,7 @@ try {
   $mail->Subject = 'Notificaciones MiSaludOnline.cl | Confirmar consulta médica';
   $mail->isHTML();
   $html = null;
-  $html .= '<p style="text-align:center"><img style="width:180px" alt="RAI health" src="https://www.rai.health/dist/img/rai.png"></p>';
+  $html .= '<p style="text-align:center"><img style="width:180px" alt="misaludonline.cl" src="https://www.misaludonline.cl/scheduling/dist/img/misaludonline.png"></p>';
   $html .= '<br><br><p style="text-align:center"><span style="font-size:20px;font-weight:bold">Estimado(a) ' . $pacie . ',</span></p>';
   $html .= '<br><br>Queremos recordarte tu próxima consulta médica.';
   $html .= '<br><br>Profesional: ' . $medic;
