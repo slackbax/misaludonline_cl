@@ -59,4 +59,39 @@ class ConsultationEvolution
       return array('estado' => false, 'msg' => $e->getMessage());
     }
   }
+
+  /**
+   * @param $id
+   * @param $db
+   * @return array
+   */
+  public function setInactive($id, $db = null): array
+  {
+    if (is_null($db)) $db = new ConnectRAI();
+
+    try {
+      $stmt = $db->Prepare("UPDATE rai_consultation_evolution SET coe_status = FALSE WHERE con_id = ?");
+
+      if (!$stmt) :
+        throw new Exception("La actualización de los estados falló en su preparación.");
+      endif;
+
+      $result = $db->prepareToBD(func_get_args());
+      $bind = $stmt->bind_param($result['typeStr'], ...$result['params']);
+
+      if (!$bind) :
+        throw new Exception("La actualización de los estados falló en su binding.");
+      endif;
+
+      if (!$stmt->execute()) :
+        throw new Exception("La actualización de los estados falló en su ejecución.");
+      endif;
+
+      $result = array('estado' => true, 'msg' => 'OK');
+      $stmt->close();
+      return $result;
+    } catch (Exception $e) {
+      return array('estado' => false, 'msg' => $e->getMessage());
+    }
+  }
 }

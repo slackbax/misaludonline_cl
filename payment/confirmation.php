@@ -26,6 +26,8 @@ try {
 
   $ins = $_cpa->set(base64_decode($response['optional']['ID']), $response['paymentData']['date'], $response['paymentData']['amount'], $response['paymentData']['fee'], $response['paymentData']['balance']);
   if (!$ins['estado']) throw new Exception('No pudo registrarse la consulta.');
+  $ins1 = $_ce->setInactive(base64_decode($response['optional']['ID']));
+  if (!$ins1['estado']) throw new Exception("No pudo actualizarse el estado de la consulta.");
   $ins2 = $_ce->set(1, 3, base64_decode($response['optional']['ID']), 'PAGO EN LINEA');
   if (!$ins2['estado']) throw new Exception('No pudo registrarse el estado de la consulta.');
 } catch (Exception $e) {
