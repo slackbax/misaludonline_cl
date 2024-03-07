@@ -62,23 +62,18 @@ try {
   $mail->setFrom(MAIL_USER, 'MiSaludOnline.cl');
   $mail->addAddress($email, $pacie);
   $mail->CharSet = 'utf-8';
-  $mail->Subject = 'Notificaciones MiSaludOnline.cl | Confirmar consulta médica';
+  $mail->Subject = 'Notificaciones MiSaludOnline.cl | Confirmación de consulta médica';
   $mail->isHTML();
   $html = null;
-  $html .= '<p style="text-align:center"><img style="width:180px" alt="misaludonline.cl" src="https://www.misaludonline.cl/scheduling/dist/img/misaludonline.png"></p>';
-  $html .= '<br><br><p style="text-align:center"><span style="font-size:20px;font-weight:bold">Estimado(a) ' . $pacie . ',</span></p>';
+  $html .= '<p><img style="width:180px" alt="misaludonline.cl" src="https://www.misaludonline.cl/scheduling/dist/img/misaludonline.png"></p>';
+  $html .= '<br><br><p><span style="font-size:18px;font-weight:bold">Estimado(a) ' . $pacie . ',</span></p>';
   $html .= '<br><br>Queremos recordarte tu próxima consulta médica.';
   $html .= '<br><br>Profesional: ' . $medic;
   $html .= '<br>Especialidad: ' . $espc;
   $html .= '<br>Fecha: ' . $date;
   $html .= '<br>Hora: ' . $time;
   $html .= '<br><br>Para confirmar o cancelar tu consulta médica, selecciona la opción correspondiente. Recuerda que si ya pagaste tu consulta en línea, ésta se confirma automáticamente:';
-  $html .= '<br><a href="https://rai.health/confirm-consultation/' . $code . '/1/" target="_blank" rel="noopener noreferrer">Confirmo mi asistencia</a> | <a href="https://rai.health/confirm-consultation/' . $code . '/0/" target="_blank" rel="noopener noreferrer">No podré asistir</a>';
-
-  if ($ins1->cont_id == 2):
-    $html .= '<br><br>Para iniciar tu teleconsulta, haz click en el siguiente enlace. Te recomendamos conectarte cinco minutos antes para que tu atención se lleve a cabo oportunamente.';
-    $html .= '<br><a href="https://www.alercesoftware.cl/meeting/' . $code . '/" target="_blank" rel="noopener noreferrer">Conectarse a la teleconsulta</a>';
-  endif;
+  $html .= '<br><a href="https://www.misaludonline.cl/scheduling/payment/index.php?id=' . $code . '" target="_blank" rel="noopener noreferrer">Pagar mi consulta</a> | <a href="https://rai.health/confirm-consultation/' . $code . '/0/" target="_blank" rel="noopener noreferrer">No podré asistir</a>';
 
   $html .= "<br><br>Muchas gracias por atenderse con nosotros.";
   $html .= "<br><br><strong>MiSaludOnline.cl - Atención médica digital</strong>";

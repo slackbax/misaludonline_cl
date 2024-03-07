@@ -37,7 +37,7 @@ class ConsultationPayment
     if (is_null($db)) $db = new ConnectRAI();
 
     try {
-      $stmt = $db->Prepare("INSERT INTO rai_consultation_payment (con_id, cpa_date, cpa_amount, cpa_fee, cpa_balance) VALUES (?, ?, ?, ?, ?)");
+      $stmt = $db->Prepare("INSERT INTO rai_consultation_payment (con_id, cpa_order, cpa_date, cpa_amount, cpa_fee, cpa_balance) VALUES (?, ?, ?, ?, ?, ?)");
 
       if (!$stmt) :
         throw new Exception("La inserción del pago falló en su preparación.");
