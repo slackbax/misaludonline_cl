@@ -1,4 +1,5 @@
 <?php
+$subd = ($_SERVER["HTTP_HOST"] == 'www.misaludonline.cl' or $_SERVER["HTTP_HOST"] == 'misaludonline.cl') ? '..' : '';
 $BASEDIR = explode('payment', dirname(__FILE__))[0];
 require $BASEDIR . '/src/settings.php';
 require $BASEDIR . '/src/constants.php';
@@ -25,7 +26,7 @@ require $BASEDIR . '/class/flow_cl/FlowApi.class.php';
         <div class="row">
           <div class="col-12 text-center">
             <a href="https://www.misaludonline.cl">
-              <img src="/dist/img/misaludonline.png" alt="MiSaludOnline.cl" style="width: 200px">
+              <img src="<?php echo $subd ?>/dist/img/misaludonline.png" alt="MiSaludOnline.cl" style="width: 200px">
             </a>
           </div>
         </div>

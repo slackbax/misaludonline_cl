@@ -28,7 +28,7 @@ try {
   if (!$ins['estado']) throw new Exception('No pudo registrarse la consulta.');
   $ins1 = $_ce->setInactive(base64_decode($response['optional']['ID']));
   if (!$ins1['estado']) throw new Exception("No pudo actualizarse el estado de la consulta.");
-  $ins2 = $_ce->set(1, 3, base64_decode($response['optional']['ID']), 'PAGO EN LINEA');
+  $ins2 = $_ce->set(1, base64_decode($response['optional']['ID']), 3, 'PAGO EN LINEA');
   if (!$ins2['estado']) throw new Exception('No pudo registrarse el estado de la consulta.');
 } catch (Exception $e) {
   echo "Error: " . $e->getCode() . " - " . $e->getMessage();
