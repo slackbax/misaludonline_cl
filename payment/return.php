@@ -1,10 +1,10 @@
 <?php
 $subd = ($_SERVER["HTTP_HOST"] == 'www.misaludonline.cl' or $_SERVER["HTTP_HOST"] == 'misaludonline.cl') ? '..' : '';
 $BASEDIR = explode('payment', dirname(__FILE__))[0];
-require $BASEDIR . '/src/settings.php';
-require $BASEDIR . '/src/constants.php';
-require $BASEDIR . '/src/functions.php';
-require $BASEDIR . '/class/flow_cl/FlowApi.class.php';
+require $BASEDIR . 'src/settings.php';
+require $BASEDIR . 'src/constants.php';
+require $BASEDIR . 'src/functions.php';
+require $BASEDIR . 'class/flow_cl/FlowApi.class.php';
 ?>
 
 <!DOCTYPE html>
@@ -35,7 +35,7 @@ require $BASEDIR . '/class/flow_cl/FlowApi.class.php';
     <section class="content">
       <div class="container">
         <?php
-        include $BASEDIR . '/html/system/includes/preloader.php';
+        include $BASEDIR . 'html/system/includes/preloader.php';
 
         try {
           if (!isset($_POST["token"])) {

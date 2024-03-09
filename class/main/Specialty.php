@@ -28,7 +28,7 @@ class Specialty
                 FROM hm_prof_specialty s
                 JOIN hm_medic_specialty hms on s.prs_id = hms.prs_id
                 JOIN health_main.hm_medic hm on hms.med_id = hm.med_id
-                WHERE med_status IS TRUE";
+                WHERE med_status IS TRUE AND med_telemedicine IS TRUE";
     $stmt = $con->Prepare($query);
     $stmt->execute();
     $result = $stmt->get_result();

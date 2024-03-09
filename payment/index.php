@@ -1,10 +1,10 @@
 <?php
 $subd = ($_SERVER["HTTP_HOST"] == 'www.misaludonline.cl' or $_SERVER["HTTP_HOST"] == 'misaludonline.cl') ? '..' : '';
 $BASEDIR = explode('payment', dirname(__FILE__))[0];
-require $BASEDIR . '/src/settings.php';
-require $BASEDIR . '/src/constants.php';
-require $BASEDIR . '/src/functions.php';
-require $BASEDIR . '/class/flow_cl/FlowApi.class.php';
+require $BASEDIR . 'src/settings.php';
+require $BASEDIR . 'src/constants.php';
+require $BASEDIR . 'src/functions.php';
+require $BASEDIR . 'class/flow_cl/FlowApi.class.php';
 require $BASEDIR . 'class/main/ConnectMAIN.php';
 require $BASEDIR . 'class/rai/ConnectRAI.php';
 require $BASEDIR . 'class/rai/Consultation.php';
@@ -43,8 +43,6 @@ require $BASEDIR . 'class/main/Medic.php';
       <div class="container">
         <?php
         if (extract($_GET)) {
-          $_con = new ConnectMAIN();
-          $_conrai = new ConnectRAI();
           $_cns = new Consultation();
           $_ppl = new People();
           $_pat = new Patient();

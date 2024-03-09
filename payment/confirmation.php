@@ -1,20 +1,20 @@
 <?php
 $BASEDIR = explode('payment', dirname(__FILE__))[0];
-require $BASEDIR . '/src/settings.php';
-require $BASEDIR . '/src/constants.php';
-require $BASEDIR . '/src/functions.php';
-require $BASEDIR . '/class/flow_cl/FlowApi.class.php';
-require $BASEDIR . '/class/rai/ConnectRAI.php';
-require $BASEDIR . '/class/main/ConnectMAIN.php';
-require $BASEDIR . '/class/rai/Consultation.php';
-require $BASEDIR . '/class/rai/ConsultationPayment.php';
-require $BASEDIR . '/class/rai/ConsultationEvolution.php';
-require $BASEDIR . '/class/main/Patient.php';
-require $BASEDIR . '/class/main/People.php';
-require $BASEDIR . '/class/main/Medic.php';
-require $BASEDIR . '/class/main/MedicSpecialty.php';
-require $BASEDIR . '/class/main/ProfessionSpecialty.php';
-require $BASEDIR . '/vendor/autoload.php';
+require $BASEDIR . 'src/settings.php';
+require $BASEDIR . 'src/constants.php';
+require $BASEDIR . 'src/functions.php';
+require $BASEDIR . 'class/flow_cl/FlowApi.class.php';
+require $BASEDIR . 'class/rai/ConnectRAI.php';
+require $BASEDIR . 'class/main/ConnectMAIN.php';
+require $BASEDIR . 'class/rai/Consultation.php';
+require $BASEDIR . 'class/rai/ConsultationPayment.php';
+require $BASEDIR . 'class/rai/ConsultationEvolution.php';
+require $BASEDIR . 'class/main/Patient.php';
+require $BASEDIR . 'class/main/People.php';
+require $BASEDIR . 'class/main/Medic.php';
+require $BASEDIR . 'class/main/MedicSpecialty.php';
+require $BASEDIR . 'class/main/ProfessionSpecialty.php';
+require $BASEDIR . 'vendor/autoload.php';
 
 $_con = new ConnectRAI();
 $_cns = new Consultation();
@@ -30,7 +30,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
 $mail = new PHPMailer(true);
-$mail->setLanguage('es', $BASEDIR . '/vendor/phpmailer/phpmailer/language/phpmailer.lang-es.php');
+$mail->setLanguage('es', $BASEDIR . 'vendor/phpmailer/phpmailer/language/phpmailer.lang-es.php');
 
 try {
   if (!isset($_POST["token"])) {
@@ -93,7 +93,7 @@ try {
 
   if ($cons->cont_id == 2):
     $html .= '<br><br>Para iniciar tu teleconsulta, haz click en el siguiente enlace. Te recomendamos conectarte cinco minutos antes para que tu atención se lleve a cabo oportunamente.';
-    $html .= '<br><a href="https://www.alercesoftware.cl/meeting/' . $response['optional']['ID'] . '/" target="_blank" rel="noopener noreferrer">Conectarse a la teleconsulta</a>';
+    $html .= '<br><a href="https://www.misaludonline.cl/meeting/' . $response['optional']['ID'] . '/" target="_blank" rel="noopener noreferrer">Conectarse a la teleconsulta</a>';
   endif;
 
   $html .= "<br><br>Muchas gracias por atenderse con nosotros.";

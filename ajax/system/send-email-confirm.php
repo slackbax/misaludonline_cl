@@ -72,7 +72,7 @@ try {
   $html .= '<br>Especialidad: ' . $espc;
   $html .= '<br>Fecha: ' . $date;
   $html .= '<br>Hora: ' . $time;
-  $html .= '<br><br>Para confirmar o cancelar tu consulta médica, selecciona la opción correspondiente. Recuerda que si ya pagaste tu consulta en línea, ésta se confirma automáticamente:';
+  $html .= '<br><br>Para pagar o cancelar tu consulta médica, selecciona la opción correspondiente. Recuerda que si ya pagaste tu consulta en línea, ésta se confirma automáticamente:';
   $html .= '<br><a href="https://www.misaludonline.cl/scheduling/payment/index.php?id=' . $code . '" target="_blank" rel="noopener noreferrer">Pagar mi consulta</a> | <a href="https://rai.health/confirm-consultation/' . $code . '/0/" target="_blank" rel="noopener noreferrer">No podré asistir</a>';
 
   $html .= "<br><br>Muchas gracias por atenderse con nosotros.";
