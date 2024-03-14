@@ -20,7 +20,7 @@ $(document).ready(function () {
   $.fn.select2.defaults.set('minimumResultsForSearch', 11)
 
   $.fn.fadeSlideRight = function (speed, fn) {
-    let mRight = '-25%';
+    let mRight = '-30%';
     if (mobileCheck()) mRight = '-100%'
     return $(this).animate({
       'margin-right': mRight
