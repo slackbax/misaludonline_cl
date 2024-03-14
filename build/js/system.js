@@ -14,6 +14,8 @@ $(document).ready(function () {
     trigger: 'hover'
   })
 
+  moment.locale('es')
+
   $.fn.select2.defaults.set('theme', 'bootstrap4')
   $.fn.select2.defaults.set('language', 'es')
   $.fn.select2.defaults.set('allowClear', true)
