@@ -100,4 +100,46 @@ class People
       return array('estado' => false, 'msg' => $e->getMessage());
     }
   }
+
+  /**
+   * @param $name
+   * @param $ap
+   * @param $am
+   * @param $email
+   * @param $birthdate
+   * @param $id
+   * @param $db
+   * @return array
+   */
+  public function update($name, $ap, $am, $email, $birthdate, $id, $db = null): array
+  {
+    if (is_null($db)):
+      $db = new ConnectMAIN();
+    endif;
+
+    try {
+      $stmt = $db->Prepare("UPDATE hm_people SET pe_fullname = ?, pe_fathername = ?, pe_mothername = ?, pe_email = ?, pe_birthdate = ? WHERE pe_id = ?");
+
+      if (!$stmt):
+        throw new Exception("La actualización del paciente falló en su preparación.");
+      endif;
+
+      $result = $db->prepareToBD(func_get_args());
+      $bind = $stmt->bind_param($result['typeStr'], ...$result['params']);
+
+      if (!$bind):
+        throw new Exception("La actualización del paciente falló en su binding.");
+      endif;
+
+      if (!$stmt->execute()):
+        throw new Exception("La actualización del paciente falló en su ejecución.");
+      endif;
+
+      $result = array('estado' => true, 'msg' => $stmt->insert_id);
+      $stmt->close();
+      return $result;
+    } catch (Exception $e) {
+      return array('estado' => false, 'msg' => $e->getMessage());
+    }
+  }
 }

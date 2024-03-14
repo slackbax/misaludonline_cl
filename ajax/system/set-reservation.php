@@ -65,6 +65,9 @@ if (extract($_POST)) {
 
       $id = $ins['msg'];
     else:
+      $ins = $_ppl->update($pat_name, $pat_lastnamep, $pat_lastnamem, $pat_email, $pat_fnac, $pat_id, $_con);
+      if (!$ins_pat['estado']) throw new Exception('Error al actualizar los datos de la persona. ' . $ins['msg']);
+
       $id = $pat_id;
     endif;
 
