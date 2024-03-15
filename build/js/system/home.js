@@ -12,7 +12,8 @@ $(document).ready(function () {
     $checkDays = $('#check-days'), $daysCalendar = $('#days-calendar'), $weekCalendar = $('#week-calendar'),
     $weekCalCont = $('#week-calendar-container'),
     $searchDate = $('#search-date'), $searchResDate = $('#search-result-date'), $backDate = $('#back-date'),
-    $confirmWindow = $('#confirmation-window'), $acceptData = $('#accept-data'), $form = $('#fReserve')
+    $confirmWindow = $('#confirmation-window'), $acceptData = $('#accept-data'), $form = $('#fReserve'),
+    $patientPhone = $('#tel-pac'), $patientEmail = $('#email-pac')
 
   today = dd + '/' + mm + '/' + yyyy
 
@@ -97,12 +98,13 @@ $(document).ready(function () {
       }).done(function (d) {
         if (d.pe_id !== null) {
           $('#pat_id').val(d.pe_id)
-          $('#pat_name, #name-pac').val(d.pe_fullname)
-          $('#pat_lastnamep, #fname-pac').val(d.pe_fathername)
-          $('#pat_lastnamem, #sname-pac').val(d.pe_mothername)
+          $('#pat_name, #name-pac').val(d.pe_fullname).prop('readonly', true)
+          $('#pat_lastnamep, #fname-pac').val(d.pe_fathername).prop('readonly', true)
+          $('#pat_lastnamem, #sname-pac').val(d.pe_mothername).prop('readonly', true)
           $('#pat_email, #email-pac').val(d.pe_email)
+          $('#pat_tel, #tel-pac').val(d.pe_phone)
           $('#pat_fnac').val(d.pe_birthdate)
-          $('#fnac-pac').val(getDate(d.pe_birthdate))
+          $('#fnac-pac').val(getDate(d.pe_birthdate)).prop('readonly', true)
         }
       })
     }, format_on: 'keyup'
@@ -256,6 +258,14 @@ $(document).ready(function () {
     })
     selectedHour = ''
     selectedProf = ''
+  })
+
+  $patientPhone.change(function () {
+    $('#pat_tel').val($(this).val())
+  })
+
+  $patientEmail.change(function () {
+    $('#pat_email').val($(this).val())
   })
 
   $acceptData.click(function () {

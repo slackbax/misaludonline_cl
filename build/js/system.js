@@ -15,6 +15,11 @@ $(document).ready(function () {
   })
 
   moment.locale('es')
+  $('[mask-date]').mask('00/00/0000')
+  $('[mask-phone]').mask('0 0000 0000')
+  $('[val-phone]').change(function () {
+    if ($(this).val().length < 9) $(this).removeClass('is-valid').addClass('is-invalid')
+  })
 
   $.fn.select2.defaults.set('theme', 'bootstrap4')
   $.fn.select2.defaults.set('language', 'es')

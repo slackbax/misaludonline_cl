@@ -111,14 +111,14 @@ class People
    * @param $db
    * @return array
    */
-  public function update($name, $ap, $am, $email, $birthdate, $id, $db = null): array
+  public function update($name, $ap, $am, $email, $birthdate, $phone, $id, $db = null): array
   {
     if (is_null($db)):
       $db = new ConnectMAIN();
     endif;
 
     try {
-      $stmt = $db->Prepare("UPDATE hm_people SET pe_fullname = ?, pe_fathername = ?, pe_mothername = ?, pe_email = ?, pe_birthdate = ? WHERE pe_id = ?");
+      $stmt = $db->Prepare("UPDATE hm_people SET pe_fullname = ?, pe_fathername = ?, pe_mothername = ?, pe_email = ?, pe_birthdate = ?, pe_phone = ? WHERE pe_id = ?");
 
       if (!$stmt):
         throw new Exception("La actualización del paciente falló en su preparación.");

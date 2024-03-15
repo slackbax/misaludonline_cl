@@ -170,6 +170,7 @@
                         <input type="hidden" id="pat_lastnamem" name="pat_lastnamem">
                         <input type="hidden" id="pat_email" name="pat_email">
                         <input type="hidden" id="pat_fnac" name="pat_fnac">
+                        <input type="hidden" id="pat_tel" name="pat_tel">
                         <h5 id="search-result-date" class="mb-4"></h5>
                         <div id="search-objects"></div>
                       </div>
@@ -205,38 +206,42 @@
     <div class="mt-5">
       <h5>Tus datos</h5>
       <div class="row">
-        <div class="form-group col-12">
+        <div class="form-group col-md-6">
           <label for="name-pac">Nombres</label>
           <input id="name-pac" class="form-control form-control-border border-width-2" type="text" placeholder="Tu nombre">
         </div>
-      </div>
-      <div class="row">
-        <div class="form-group col-6">
+        <div class="form-group col-md-6">
           <label for="fname-pac">Primer apellido</label>
           <input id="fname-pac" class="form-control form-control-border border-width-2" type="text" placeholder="Tu primer apellido">
         </div>
-        <div class="form-group col-6">
+      </div>
+      <div class="row">
+        <div class="form-group col-md-6">
           <label for="sname-pac">Segundo apellido</label>
           <input id="sname-pac" class="form-control form-control-border border-width-2" type="text" placeholder="Tu segundo apellido">
         </div>
+        <div class="form-group col-md-6">
+          <label for="fnac-pac">Fecha nacimiento</label>
+          <input id="fnac-pac" class="form-control form-control-border border-width-2" mask-date type="text" placeholder="dd/mm/yyyy">
+        </div>
       </div>
       <div class="row">
-        <div class="form-group col-6">
-          <label for="email-pac">E-mail</label>
-          <input id="email-pac" class="form-control form-control-border border-width-2" type="text" placeholder="Tu nombre">
+        <div class="form-group col-md-6">
+          <label for="tel-pac">Teléfono</label>
+          <input id="tel-pac" class="form-control form-control-border border-width-2" mask-phone val-phone type="text" placeholder="9 9999 9999" autocomplete="off" maxlength="11">
         </div>
-        <div class="form-group col-6">
-          <label for="fnac-pac">Fecha nacimiento</label>
-          <input id="fnac-pac" class="form-control form-control-border border-width-2 mask-date" type="text" placeholder="dd/mm/yyyy">
+        <div class="form-group col-md-6">
+          <label for="email-pac">E-mail</label>
+          <input id="email-pac" class="form-control form-control-border border-width-2" type="text" placeholder="Tu e-mail">
         </div>
       </div>
     </div>
   </div>
   <div class="card-footer">
-    <div class="col-10 offset-1 mb-2">
-      <button type="button" id="accept-data" class="btn btn-success btn-block">Agendar mi hora</button>
+    <div class="col-md-10 offset-md-1 mb-2">
+      <button type="button" id="accept-data" class="btn btn-success btn-block btn-lg">Agendar mi hora</button>
     </div>
-    <div class="col-10 offset-1 mb-2">
+    <div class="col-md-10 offset-md-1 mb-2">
       <button type="button" id="keep-searching" class="btn btn-outline-secondary btn-block">Elegir otro horario</button>
     </div>
   </div>
