@@ -91,7 +91,7 @@ if (extract($_POST)) {
       $data[] = $item;
     }
 
-    $response = ['res' => true, 'results' => $data, 'msg' => 'El perfil ha sido guardado correctamente.'];
+    $response = ['res' => true, 'results' => $data, 'msg' => ''];
     echo json_encode($response);
   } catch (Exception $e) {
     $response = ['res' => false, 'title' => '<strong>¡Error!</strong><br>', 'msg' => $e->getMessage(), 'code' => $e->getCode()];
