@@ -49,22 +49,22 @@ class Medic
     return $array;
   }
 
-  public function getById($id, $db = null): array
+  public function getById($id, $spec, $db = null): array
   {
     if (is_null($db)):
       $db = new ConnectMAIN();
     endif;
 
-    $query = "SELECT m.med_id, CONCAT(pe_fullname, ' ', pe_fathername, ' ', pe_mothername) AS med_name, prs_name AS specialty, pss_name AS subspecialty
+    $query = "SELECT DISTINCT m.med_id, CONCAT(pe_fullname, ' ', pe_fathername, ' ', pe_mothername) AS med_name, prs_name AS specialty, pss_name AS subspecialty
                 FROM hm_medic m 
                 JOIN hm_people hp ON hp.pe_id = m.pe_id
-                JOIN hm_medic_specialty hms ON m.med_id = hms.med_id
+                JOIN rai_health.rai_block_medic hms ON m.med_id = hms.med_id
                 LEFT JOIN hm_medic_subspecialty mss ON m.med_id = mss.med_id 
                 LEFT JOIN hm_prof_subespecialty pss ON mss.pss_id = pss.pss_id
                 JOIN hm_prof_specialty ps ON hms.prs_id = ps.prs_id
-                WHERE m.med_id = ?";
+                WHERE m.med_id = ? AND hms.prs_id = ?";
     $stmt = $db->Prepare($query);
-    $stmt->bind_param('i', $id);
+    $stmt->bind_param('ii', $id, $spec);
     $stmt->execute();
     $result = $stmt->get_result();
     $array = [];
@@ -101,10 +101,10 @@ class Medic
       $subq = ' AND mss.pss_id = ?';
     }
 
-    $query = "SELECT m.med_id, CONCAT(pe_fullname, ' ', pe_fathername, ' ', pe_mothername) AS med_name, prs_name AS specialty, pss_name AS subspecialty
+    $query = "SELECT DISTINCT m.med_id, CONCAT(pe_fullname, ' ', pe_fathername, ' ', pe_mothername) AS med_name, prs_name AS specialty, pss_name AS subspecialty
                 FROM hm_medic m 
                 JOIN hm_people hp ON hp.pe_id = m.pe_id
-                JOIN hm_medic_specialty hms ON m.med_id = hms.med_id
+                JOIN rai_health.rai_block_medic hms ON m.med_id = hms.med_id
                 LEFT JOIN hm_medic_subspecialty mss ON m.med_id = mss.med_id 
                 LEFT JOIN hm_prof_subespecialty pss ON mss.pss_id = pss.pss_id
                 JOIN hm_prof_specialty ps ON hms.prs_id = ps.prs_id

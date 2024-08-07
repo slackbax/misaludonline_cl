@@ -262,7 +262,8 @@ Copyright (c) 2019 César Chas
           date: moment(targetObj).format('YYYY-MM-DD'),
           spec: $('#name-spec').val(),
           subspec: $('#name-subspec').val(),
-          prof: $('#name-prof').val()
+          prof: $('#name-prof').val(),
+          prspec: $('#name-prspec').val()
         }
       }).done(function (d) {
         if (d.res) {
@@ -340,7 +341,7 @@ Copyright (c) 2019 César Chas
           '<span class="nav-link">'
         $.each(v.hours, function (hi, h) {
           let tmp = h.split(':')
-          html += '<button type="button" class="btn hour-slot" id="' + v.id + '_' + tmp[0] + '_' + tmp[1] + '" data-hour="' + v.date + '_' + h + '">' + h + '</button>'
+          html += '<button type="button" class="btn hour-slot" id="' + v.id + '_' + v.spec_id + '_' + tmp[0] + '_' + tmp[1] + '" data-hour="' + v.date + '_' + h + '">' + h + '</button>'
         })
         html += '</span>' +
           '</li>' +

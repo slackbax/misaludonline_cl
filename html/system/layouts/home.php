@@ -113,9 +113,16 @@
                           </div>
 
                           <div id="div-prof">
-                            <div class="form-group col-md-10 offset-md-1 mb-5" id="select-professional">
+                            <div class="form-group col-md-10 offset-md-1" id="select-professional">
                               <label for="name-prof">Profesional</label>
                               <select id="name-prof" name="professional" class="form-control form-control-border border-width-2" data-placeholder="Selecciona el profesional"></select>
+                            </div>
+
+                            <div id="div-prspec">
+                              <div class="form-group col-md-10 offset-md-1" id="select-prspecialty">
+                                <label for="name-prspec">Especialidad</label>
+                                <select id="name-prspec" name="specialty" class="form-control form-control-border border-width-2" data-placeholder="Selecciona la especialidad"></select>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -163,6 +170,7 @@
                       <div class="card-body" id="search-results">
                         <input type="hidden" id="pat_id" name="pat_id">
                         <input type="hidden" id="med_id" name="med_id">
+                        <input type="hidden" id="spec_id" name="spec_id">
                         <input type="hidden" id="med_amount" name="med_amount">
                         <input type="hidden" id="slot_data" name="slot_data">
                         <input type="hidden" id="pat_name" name="pat_name">

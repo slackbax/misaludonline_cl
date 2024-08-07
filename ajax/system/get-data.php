@@ -32,7 +32,8 @@ if (extract($_POST)) {
     }
 
     if (!empty($prof)) {
-      $medic_data = $_med->getById($prof);
+      $medic_data = $_med->getById($prof, $prspec);
+      $spec = $prspec;
     }
 
     $data = [];
@@ -49,7 +50,7 @@ if (extract($_POST)) {
       $moving_date = DateTime::createFromFormat('Y-m-d H:i:s', $date . ' ' . $schedule->sch_hourstart);
       $end_date = DateTime::createFromFormat('Y-m-d H:i:s', $date . ' ' . $schedule->sch_hourend);
       $today_date = new DateTime('now');
-      $bm = $_bmd->getByMedic($med->id);
+      $bm = $_bmd->getByMedic($med->id, $spec);
       $tmp = explode(':', $bm->blo_duration);
       $interval = ((int)$tmp[0] * 60) + (int)$tmp[1];
       if ($start_date > $today_date)
@@ -83,10 +84,11 @@ if (extract($_POST)) {
       $item->id = $med->id;
       $item->name = $med->name;
       $item->specialty = $med->specialty;
+      $item->spec_id = $spec;
       if (!empty($med->subspecialty))
         $item->specialty .= ' - ' . $med->subspecialty;
       $item->date = $date;
-      $item->amount = $schedule->sch_amount;
+      $item->amount = $bm->bm_amount;
       $item->hours = formatDate($hours);
       $data[] = $item;
     }

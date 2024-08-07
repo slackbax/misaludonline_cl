@@ -31,7 +31,7 @@ if (extract($_POST)) {
     $med = $_med->get($med_id);
 
     # Check for consultations in the same time slot
-    $bm = $_bmd->getByMedic($med_id);
+    $bm = $_bmd->getByMedic($med_id, $spec_id);
     $tmp = explode(':', $bm->blo_duration);
     $interval = ((int)$tmp[0] * 60) + (int)$tmp[1];
 
