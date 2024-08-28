@@ -54,7 +54,6 @@ if (extract($_POST)) {
       throw new Exception('La hora seleccionada no se encuentra disponible.');
     endif;
 
-    $pat_fnac = db_date($pat_fnac);
     # If patient not existing
     if (empty($pat_id)):
       $ins = $_ppl->set(null, null, null, $rut, 1, $pat_name, $pat_lastnamep, $pat_lastnamem, null, $pat_email, null, $pat_tel, $pat_fnac, null, $med->us_id, $med->us_id, $_con);
@@ -75,7 +74,6 @@ if (extract($_POST)) {
 
     if (is_null($chk->pat_id)):
       $ppl = $_ppl->get($id);
-      $code = 'PA-' . str_replace('.', '', explode('-', $ppl->pe_rut)[0]);
       $ins_pat = $_pat->set($id, $med_id, $code, $med->us_id, $med->us_id, $_con);
       if (!$ins_pat['estado']) throw new Exception('Error al guardar los datos del paciente. ' . $ins_pat['msg']);
 

@@ -4,12 +4,14 @@ $(document).ready(function () {
   const dd = String(today.getDate()).padStart(2, '0'), mm = String(today.getMonth() + 1).padStart(2, '0'),
     yyyy = today.getFullYear(), $dataNext = $('#data-next'), $searchNext = $('#search-next'), $rut = $('#rut-pac'),
     $prevision = $('#prevision-pac'), $specialty = $('#name-spec'), $div_subs = $('#div-subspec'),
-    $subspecialty = $('#name-subspec'), $professional = $('#name-prof'), $div_specs = $('#div-prspec'), $prspecialty = $('#name-prspec'),
+    $subspecialty = $('#name-subspec'), $professional = $('#name-prof'), $div_specs = $('#div-prspec'),
+    $prspecialty = $('#name-prspec'),
     $checkDays = $('#check-days'), $daysCalendar = $('#days-calendar'), $weekCalendar = $('#week-calendar'),
     $weekCalCont = $('#week-calendar-container'), $searchDate = $('#search-date'),
     $searchResDate = $('#search-result-date'), $backDate = $('#back-date'), $confirmWindow = $('#confirmation-window'),
-    $acceptData = $('#accept-data'), $form = $('#fReserve'), $patientPhone = $('#tel-pac'),
-    $patientEmail = $('#email-pac')
+    $acceptData = $('#accept-data'), $form = $('#fReserve'), $patName = $('#name-pac'), $patFName = $('#fname-pac'),
+    $patSName = $('#sname-pac'),
+    $patNac = $('#fnac-pac'), $patPhone = $('#tel-pac'), $patEmail = $('#email-pac')
 
   today = dd + '/' + mm + '/' + yyyy
 
@@ -80,7 +82,10 @@ $(document).ready(function () {
           $('#pat_lastnamep, #fname-pac').val(d.pe_fathername).prop('readonly', true)
           $('#pat_lastnamem, #sname-pac').val(d.pe_mothername).prop('readonly', true)
           $('#pat_email, #email-pac').val(d.pe_email)
-          $('#pat_tel, #tel-pac').val(d.pe_phone)
+          $('#pat_tel').val(d.pe_phone)
+          let base_phone = d.pe_phone.substring(3)
+          let formatted_phone = base_phone.substring(0, 1) + ' ' + base_phone.substring(1, 5) + ' ' + base_phone.substring(5, base_phone.length)
+          $('#tel-pac').val(formatted_phone)
           $('#pat_fnac').val(d.pe_birthdate)
           $('#fnac-pac').val(getDate(d.pe_birthdate)).prop('readonly', true)
         }
@@ -262,12 +267,40 @@ $(document).ready(function () {
     selectedProf = ''
   })
 
-  $patientPhone.change(function () {
-    $('#pat_tel').val($(this).val())
+  $patName.change(function () {
+    if ($.trim($(this).val()) !== '') {
+      $('#pat_name').val($(this).val())
+    }
   })
 
-  $patientEmail.change(function () {
-    $('#pat_email').val($(this).val())
+  $patFName.change(function () {
+    if ($.trim($(this).val()) !== '') {
+      $('#pat_lastnamep').val($(this).val())
+    }
+  })
+
+  $patSName.change(function () {
+    if ($.trim($(this).val()) !== '') {
+      $('#pat_lastnamem').val($(this).val())
+    }
+  })
+
+  $patNac.change(function () {
+    if ($.trim($(this).val()) !== '') {
+      $('#pat_fnac').val(setDate($(this).val()))
+    }
+  })
+
+  $patPhone.change(function () {
+    if ($.trim($(this).val()) !== '') {
+      $('#pat_tel').val('+56 ' + $(this).val().replace(/\s/g, ''))
+    }
+  })
+
+  $patEmail.change(function () {
+    if ($.trim($(this).val()) !== '') {
+      $('#pat_email').val($(this).val())
+    }
   })
 
   $acceptData.click(function () {
@@ -342,9 +375,51 @@ $(document).ready(function () {
   }
 
   function validateForm() {
+    let validate = true, errors = '';
+    if ($.trim($patName.val()) === '') {
+      errors += '- Debes registrar tu nombre.<br>'
+      validate = false;
+    }
+    if ($.trim($patFName.val()) === '') {
+      errors += '- Debes registrar tu primer apellido.<br>'
+      validate = false;
+    }
+    if ($.trim($patNac.val()) === '') {
+      errors += '- Debes registrar tu fecha de nacimiento.<br>'
+      validate = false;
+    }
+    if ($.trim($patPhone.val()) === '') {
+      errors += '- Debes registrar tu teléfono de contacto.<br>'
+      validate = false;
+    }
+    if ($.trim($patEmail.val()) === '') {
+      errors += '- Debes registrar tu email de contacto.<br>'
+      validate = false;
+    }
+
     $acceptData.html('<span class="spinner-border spinner-border-sm ml-2" id="spnSubmit" role="status"></span>')
     $confirmWindow.addClass('noVisibility')
-    return true;
+
+    if (!validate) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Hubo un error al agendar tu hora',
+        html: 'Tu reserva de hora tiene los siguientes errores:<br>' + errors,
+        confirmButtonText: '<i class="fas fa-check mr-2"></i>Aceptar',
+        confirmButtonColor: '#3498db',
+        showCancelButton: false,
+        allowOutsideClick: false,
+        allowEscapeKey: false
+      }).then((result) => {
+        if (result.isConfirmed) {
+          $acceptData.html('Agendar mi hora')
+          $confirmWindow.removeClass('noVisibility')
+        }
+      })
+      return false;
+    } else {
+      return true;
+    }
   }
 
   function showResponse(response) {

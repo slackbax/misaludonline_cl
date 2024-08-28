@@ -80,6 +80,21 @@ if (extract($_POST)) {
       if (count($hours) == 0)
         break;
 
+      foreach ($hours as $ih => $hour) {
+        $schedule_date = DateTime::createFromFormat('Y-m-d H:i:s', $hour);
+
+        foreach ($cons as $ci => $val) {
+          $start_date = DateTime::createFromFormat('Y-m-d H:i:s', $val->con_date . ' ' . $val->con_hourstart);
+          $end_date = DateTime::createFromFormat('Y-m-d H:i:s', $val->con_date . ' ' . $val->con_hourend);
+
+          if ($schedule_date > $start_date and $schedule_date < $end_date) {
+            unset($hours[$ih]);
+          }
+        }
+      }
+      if (count($hours) == 0)
+        break;
+
       $item = new stdClass();
       $item->id = $med->id;
       $item->name = $med->name;

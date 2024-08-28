@@ -215,11 +215,11 @@
       <h5>Tus datos</h5>
       <div class="row">
         <div class="form-group col-md-6">
-          <label for="name-pac">Nombres</label>
+          <label for="name-pac">Nombres *</label>
           <input id="name-pac" class="form-control form-control-border border-width-2" type="text" placeholder="Tu nombre">
         </div>
         <div class="form-group col-md-6">
-          <label for="fname-pac">Primer apellido</label>
+          <label for="fname-pac">Primer apellido *</label>
           <input id="fname-pac" class="form-control form-control-border border-width-2" type="text" placeholder="Tu primer apellido">
         </div>
       </div>
@@ -229,17 +229,17 @@
           <input id="sname-pac" class="form-control form-control-border border-width-2" type="text" placeholder="Tu segundo apellido">
         </div>
         <div class="form-group col-md-6">
-          <label for="fnac-pac">Fecha nacimiento</label>
+          <label for="fnac-pac">Fecha nacimiento *</label>
           <input id="fnac-pac" class="form-control form-control-border border-width-2" mask-date type="text" placeholder="dd/mm/yyyy">
         </div>
       </div>
       <div class="row">
         <div class="form-group col-md-6">
-          <label for="tel-pac">Teléfono</label>
+          <label for="tel-pac">Teléfono *</label>
           <input id="tel-pac" class="form-control form-control-border border-width-2" mask-phone val-phone type="text" placeholder="9 9999 9999" autocomplete="off" maxlength="11">
         </div>
         <div class="form-group col-md-6">
-          <label for="email-pac">E-mail</label>
+          <label for="email-pac">E-mail *</label>
           <input id="email-pac" class="form-control form-control-border border-width-2" type="text" placeholder="Tu e-mail">
         </div>
       </div>
