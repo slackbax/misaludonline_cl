@@ -100,7 +100,7 @@ if (extract($_POST)) {
 
     $_conrai->Commit();
     $_conrai->autoCommit(TRUE);
-    $response = array('type' => true, 'conid' => base64_encode($ins['conid']));
+    $response = array('type' => true, 'conid' => base64_encode($ins['conid']), 'specid' => base64_encode($spec_id));
     echo json_encode($response);
   } catch (Exception $e) {
     echo json_encode(['type' => false, 'message' => $e->getMessage(), 'code' => $e->getCode()]);

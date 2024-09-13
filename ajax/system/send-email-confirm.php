@@ -30,6 +30,7 @@ $mail->setLanguage('es', $BASEDIR . 'vendor/phpmailer/phpmailer/language/phpmail
 
 try {
   $conid = base64_decode($conid);
+  $specid = base64_decode($specid);
 
   $ins1 = $_cl1->get($conid);
   $date = formatter_date($ins1->con_date);
@@ -49,6 +50,7 @@ try {
   $espc = $int7->prs_name;
 
   $code = base64_encode($conid);
+  $specode = base64_encode($specid);
 
   // $mail->SMTPDebug = SMTP::DEBUG_SERVER;
   $mail->isSMTP();
@@ -73,7 +75,7 @@ try {
   $html .= '<br>Fecha: ' . $date;
   $html .= '<br>Hora: ' . $time;
   $html .= '<br><br>Para pagar o cancelar tu consulta médica, selecciona la opción correspondiente. Recuerda que si ya pagaste tu consulta en línea, ésta se confirma automáticamente:';
-  $html .= '<br><a href="https://www.misaludonline.cl/scheduling/payment/index.php?id=' . $code . '" target="_blank" rel="noopener noreferrer">Pagar mi consulta</a> | <a href="https://rai.health/confirm-consultation/' . $code . '/0/" target="_blank" rel="noopener noreferrer">No podré asistir</a>';
+  $html .= '<br><a href="https://www.misaludonline.cl/scheduling/payment/index.php?id=' . $code . '&spec=' . $specode . '" target="_blank" rel="noopener noreferrer">Pagar mi consulta</a> | <a href="https://rai.health/confirm-consultation/' . $code . '/0/" target="_blank" rel="noopener noreferrer">No podré asistir</a>';
 
   $html .= "<br><br>Muchas gracias por atenderse con nosotros.";
   $html .= "<br><br><strong>MiSaludOnline.cl - Atención médica digital</strong>";

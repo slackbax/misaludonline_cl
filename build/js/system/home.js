@@ -425,7 +425,10 @@ $(document).ready(function () {
   function showResponse(response) {
     if (response.type) {
       $.ajax({
-        url: 'ajax/system/send-email-confirm.php', type: 'post', data: {conid: response.conid}, dataType: 'json'
+        url: 'ajax/system/send-email-confirm.php',
+        type: 'post',
+        data: {conid: response.conid, specid: response.specid},
+        dataType: 'json'
       }).done(function (r) {
         $acceptData.html('Agendar mi hora')
         if (r.res) {
@@ -440,7 +443,7 @@ $(document).ready(function () {
             allowEscapeKey: false
           }).then((result) => {
             if (result.isConfirmed) {
-              let win = window.open('payment/index.php?id=' + response.conid)
+              let win = window.open('payment/index.php?id=' + response.conid + '&spec=' + response.specid)
               if (win) {
                 win.focus()
               }
