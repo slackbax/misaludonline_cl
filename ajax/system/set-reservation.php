@@ -42,6 +42,7 @@ if (extract($_POST)) {
     $datetime = DateTime::createFromFormat('H:i:s', $time);
     $datetime->modify('+' . $interval . ' minutes');
     $end_date = DateTime::createFromFormat('Y-m-d H:i:s', $date . ' ' . $datetime->format('H:i:s'));
+    $end_date->modify('-1 minute');
 
     $cons = $_cs->getBetweenDates($med_id, $start_date->format('Y-m-d H:i:s'), $end_date->format('Y-m-d H:i:s'));
     if (count($cons) > 0):
