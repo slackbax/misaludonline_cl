@@ -58,15 +58,16 @@ if (extract($_POST)) {
     # If patient not existing
     if (empty($pat_id)):
       $ins = $_ppl->set(null, null, null, $rut, 1, $pat_name, $pat_lastnamep, $pat_lastnamem, null, $pat_email, null, $pat_tel, $pat_fnac, null, $med->us_id, $med->us_id, $_con);
-
-      if (!$ins['estado']):
-        throw new Exception('Error al guardar los datos de la persona. ' . $ins['msg']);
-      endif;
+      if (!$ins['estado']) throw new Exception('Error al guardar los datos de la persona. ' . $ins['msg']);
+      $code_pat = 'PA-' . str_replace('.', '', explode('-', $rut)[0]);
 
       $id = $ins['msg'];
     else:
       $ins = $_ppl->update($pat_name, $pat_lastnamep, $pat_lastnamem, $pat_email, $pat_fnac, $pat_tel, $pat_id, $_con);
       if (!$ins['estado']) throw new Exception('Error al actualizar los datos de la persona. ' . $ins['msg']);
+      $pat_data = $_pat->get($pat_id);
+      $pe_data = $_ppl->get($pat_data->pe_id);
+      $code_pat = 'PA-' . str_replace('.', '', explode('-', $pe_data->pe_rut)[0]);
 
       $id = $pat_id;
     endif;
@@ -75,7 +76,7 @@ if (extract($_POST)) {
 
     if (is_null($chk->pat_id)):
       $ppl = $_ppl->get($id);
-      $ins_pat = $_pat->set($id, $med_id, $code, $med->us_id, $med->us_id, $_con);
+      $ins_pat = $_pat->set($id, $med_id, $code_pat, $med->us_id, $med->us_id, $_con);
       if (!$ins_pat['estado']) throw new Exception('Error al guardar los datos del paciente. ' . $ins_pat['msg']);
 
       $ipatient = $ins_pat['msg'];
