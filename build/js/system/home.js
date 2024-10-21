@@ -293,7 +293,7 @@ $(document).ready(function () {
 
   $patPhone.change(function () {
     if ($.trim($(this).val()) !== '') {
-      $('#pat_tel').val('+56 ' + $(this).val().replace(/\s/g, ''))
+      $('#pat_tel').val('+56' + $(this).val().replace(/\s/g, ''))
     }
   })
 
