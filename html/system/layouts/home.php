@@ -18,8 +18,9 @@
       <div class="container">
         <div class="row">
           <div class="col-12 text-center">
-            <a href="https://www.misaludonline.cl">
+            <a href="https://centromenteverde.com">
               <img src="dist/img/misaludonline.png" alt="MiSaludOnline.cl" style="width: 200px">
+              <img src="dist/img/menteverde.png" alt="CentroMenteVerde.cl" style="width:200px;margin-left:20px">
             </a>
           </div>
         </div>
@@ -41,7 +42,7 @@
                 <div class="step" data-target="#search-hour">
                   <button type="button" class="step-trigger" role="tab" aria-controls="search-hour" id="search-hour-trigger">
                     <span class="bs-stepper-circle">2</span>
-                    <span class="bs-stepper-label">Busca tu médico</span>
+                    <span class="bs-stepper-label">Busca tu profesional</span>
                   </button>
                 </div>
                 <div class="line"></div>
@@ -87,7 +88,7 @@
                   <div id="search-hour" class="content" role="tabpanel" aria-labelledby="search-hour-trigger">
                     <div class="card card-primary">
                       <div class="card-header">
-                        <h3 class="card-title"><i class="fa fa-search mr-2"></i>Busca tu médico</h3>
+                        <h3 class="card-title"><i class="fa fa-search mr-2"></i>Busca tu profesional</h3>
                       </div>
 
                       <div class="card-body">
@@ -197,6 +198,9 @@
                 </div>
               </form>
             </div>
+          </div>
+          <div class="col-md-4 offset-md-4">
+            <a class="btn btn-block btn-outline-success" href="https://centromenteverde.com"><i class="fa fa-home mr-2"></i>Volver a CENTRO MENTE VERDE</a>
           </div>
         </div>
       </div>
